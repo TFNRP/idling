@@ -65,15 +65,15 @@ function StartIdling()
 
       -- don't apply restrictions to explicit resources
       if not IsInTable(resource, Config.IdleResources) then
-        if Config.Restrict.Client and (GetResourceMetadata(resource, 'client_script') or GetResourceMetadata(resource, 'client_scripts')) then
+        if Config.Restrict.Client and GetResourceMetadata(resource, 'client_script') then
           info('Ignoring ' .. resource .. ' due to containing client scripts.')
           goto continue
         end
-        if Config.Restrict.Server and (GetResourceMetadata(resource, 'server_script') or GetResourceMetadata(resource, 'server_scripts')) then
+        if Config.Restrict.Server and GetResourceMetadata(resource, 'server_script') then
           info('Ignoring ' .. resource .. ' due to containing server scripts.')
           goto continue
         end
-        if (Config.Restrict.Client or Config.Restrict.Server) and (GetResourceMetadata(resource, 'shared_script') or GetResourceMetadata(resource, 'shared_scripts')) then
+        if (Config.Restrict.Client or Config.Restrict.Server) and GetResourceMetadata(resource, 'shared_script') then
           info('Ignoring ' .. resource .. ' due to containing shared scripts.')
           goto continue
         end
@@ -96,11 +96,11 @@ function StartIdling()
             goto continue
           end
         end
-        if Config.Restrict.ClientExport and (GetResourceMetadata(resource, 'export') or GetResourceMetadata(resource, 'exports')) then
+        if Config.Restrict.ClientExport and GetResourceMetadata(resource, 'export') then
           info('Ignoring ' .. resource .. ' due to containing client exports.')
           goto continue
         end
-        if Config.Restrict.ServerExport and (GetResourceMetadata(resource, 'server_export') or GetResourceMetadata(resource, 'server_exports')) then
+        if Config.Restrict.ServerExport and GetResourceMetadata(resource, 'server_export') then
           info('Ignoring ' .. resource .. ' due to containing server exports.')
           goto continue
         end
